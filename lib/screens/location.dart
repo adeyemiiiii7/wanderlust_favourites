@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wanderlust_favourites/screens/add_location.dart';
 import 'package:wanderlust_favourites/widgets/location_list.dart';
 
 class LocationsScreen extends StatelessWidget {
@@ -11,7 +12,10 @@ class LocationsScreen extends StatelessWidget {
         title: const Text('Your Wanderlust Favourites'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (ctx) => const AddLocationScreen()));
+            },
             icon: const Icon(Icons.add),
           ),
         ],
