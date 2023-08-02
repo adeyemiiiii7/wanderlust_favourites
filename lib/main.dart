@@ -5,22 +5,22 @@ import 'package:wanderlust_favourites/screens/location.dart';
 
 final colorScheme = ColorScheme.fromSeed(
   brightness: Brightness.dark,
-  seedColor: const Color.fromARGB(255, 102, 6, 247),
-  background: const Color.fromARGB(255, 56, 49, 66),
+  seedColor: const Color.fromARGB(255, 0, 5, 14),
+  background: const Color.fromARGB(255, 6, 6, 7),
 );
 
 final theme = ThemeData().copyWith(
   useMaterial3: true,
   scaffoldBackgroundColor: colorScheme.background,
   colorScheme: colorScheme,
-  textTheme: GoogleFonts.ubuntuCondensedTextTheme().copyWith(
-    titleSmall: GoogleFonts.ubuntuCondensed(
+  textTheme: GoogleFonts.poppinsTextTheme().copyWith(
+    titleSmall: GoogleFonts.poppins(
       fontWeight: FontWeight.bold,
     ),
-    titleMedium: GoogleFonts.ubuntuCondensed(
+    titleMedium: GoogleFonts.poppins(
       fontWeight: FontWeight.bold,
     ),
-    titleLarge: GoogleFonts.ubuntuCondensed(
+    titleLarge: GoogleFonts.poppins(
       fontWeight: FontWeight.bold,
     ),
   ),
