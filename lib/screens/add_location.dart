@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AddLocationScreen extends StatefulWidget {
+class AddLocationScreen extends ConsumerStatefulWidget {
   const AddLocationScreen({super.key});
 
   @override
-  State<AddLocationScreen> createState() => _AddLocationScreenState();
+  ConsumerState<AddLocationScreen> createState() => _AddLocationScreenState();
 }
 
-class _AddLocationScreenState extends State<AddLocationScreen> {
+class _AddLocationScreenState extends ConsumerState<AddLocationScreen> {
   final _titleController = TextEditingController();
+
+  void _saveLocation() {
+    final enteredText = _titleController.text;
+    if (enteredText.isEmpty) {
+      return;
+    }
+  }
 
   @override
   void dispose() {
