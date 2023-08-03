@@ -1,6 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wanderlust_favourites/models/location.dart';
 
+/// A class that manages a list of user locations.
+///
+/// This class allows adding new locations to the list.
 class UserLocationsNotifier extends StateNotifier<List<Location>> {
   UserLocationsNotifier() : super(const []);
 
@@ -9,7 +12,9 @@ class UserLocationsNotifier extends StateNotifier<List<Location>> {
     state = [newLocation, ...state];
   }
 }
+//<UserLocationsNotifier, List> telling the provider the kind of data that would be managed
 
-final userLocationProvider = StateNotifierProvider(
+final userLocationProvider =
+    StateNotifierProvider<UserLocationsNotifier, List<Location>>(
   (ref) => UserLocationsNotifier(),
 );

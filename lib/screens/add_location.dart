@@ -1,5 +1,8 @@
+import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:wanderlust_favourites/providers/user_locations.dart';
 
 class AddLocationScreen extends ConsumerStatefulWidget {
   const AddLocationScreen({super.key});
@@ -12,10 +15,13 @@ class _AddLocationScreenState extends ConsumerState<AddLocationScreen> {
   final _titleController = TextEditingController();
 
   void _saveLocation() {
-    final enteredText = _titleController.text;
-    if (enteredText.isEmpty) {
+    final enteredTitle = _titleController.text;
+    if (enteredTitle.isEmpty) {
       return;
     }
+    ref.read(userLocationProvider.notifier).addLocation(enteredTitle);
+
+    Navigator.of(context).pop();
   }
 
   @override
@@ -43,7 +49,7 @@ class _AddLocationScreenState extends ConsumerState<AddLocationScreen> {
             ),
             const SizedBox(height: 16),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: _saveLocation,
               icon: const Icon(Icons.add),
               label: const Text('Add A Location'),
             ),

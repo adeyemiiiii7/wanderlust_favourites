@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:wanderlust_favourites/providers/user_locations.dart';
 import 'package:wanderlust_favourites/screens/add_location.dart';
 import 'package:wanderlust_favourites/widgets/location_list.dart';
 
-class LocationsScreen extends StatelessWidget {
+class LocationsScreen extends ConsumerWidget {
   const LocationsScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userLocations = ref.watch(userLocationProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Wanderlust Favourites'),
