@@ -24,7 +24,7 @@ class LocationsScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: LocationsList(locations: []),
+      body: LocationsList(locations: userLocations),
     );
   }
 }
