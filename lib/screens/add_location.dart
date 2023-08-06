@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wanderlust_favourites/providers/user_locations.dart';
 import 'package:wanderlust_favourites/widgets/image_input.dart';
@@ -12,13 +13,16 @@ class AddLocationScreen extends ConsumerStatefulWidget {
 
 class _AddLocationScreenState extends ConsumerState<AddLocationScreen> {
   final _titleController = TextEditingController();
+  File? _selectedImage;
 
   void _saveLocation() {
     final enteredTitle = _titleController.text;
-    if (enteredTitle.isEmpty) {
+    if (enteredTitle.isEmpty || _selectedImage == null) {
       return;
     }
-    ref.read(userLocationProvider.notifier).addLocation(enteredTitle);
+    ref
+        .read(userLocationProvider.notifier)
+        .addLocation(enteredTitle, _selectedImage!);
 
     Navigator.of(context).pop();
   }
@@ -47,7 +51,11 @@ class _AddLocationScreenState extends ConsumerState<AddLocationScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            ImageInput(),
+            ImageInput(
+              onPickImage: (image) {
+                _selectedImage = image;
+              },
+            ),
             ElevatedButton.icon(
               onPressed: _saveLocation,
               icon: const Icon(Icons.add),

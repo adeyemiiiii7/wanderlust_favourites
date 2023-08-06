@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wanderlust_favourites/models/location.dart';
 
@@ -7,7 +9,7 @@ import 'package:wanderlust_favourites/models/location.dart';
 class UserLocationsNotifier extends StateNotifier<List<Location>> {
   UserLocationsNotifier() : super(const []);
 
-  void addLocation(String title) {
+  void addLocation(String title, File file) {
     final newLocation = Location(title: title);
     state = [newLocation, ...state];
   }
