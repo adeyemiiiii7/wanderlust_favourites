@@ -12,54 +12,53 @@ class ImageInput extends StatefulWidget {
 
 class _ImageInputState extends State<ImageInput> {
   @override
-    File? _selectedImage;
+  File? _selectedImage;
 
-    void _takePicture() async {
-      final imagePicker = ImagePicker();
-      final pickedImage = await imagePicker.pickImage(
-          source: ImageSource.camera, maxWidth: 600);
+  void _takePicture() async {
+    final imagePicker = ImagePicker();
+    final pickedImage =
+        await imagePicker.pickImage(source: ImageSource.camera, maxWidth: 600);
 
-      if (pickedImage == null) {
-        return;
-      }
-
-      setState(() {
-        _selectedImage = File(pickedImage.path);
-      });
+    if (pickedImage == null) {
+      return;
     }
 
-    @override
-    Widget build(BuildContext context) {
-      Widget content = TextButton.icon(
-        icon: const Icon(Icons.camera),
-        label: const Text('Take Picture'),
-        onPressed: _takePicture,
-      );
+    setState(() {
+      _selectedImage = File(pickedImage.path);
+    });
+  }
 
-      if (_selectedImage != null) {
-        content = GestureDetector(
-          onTap: _takePicture,
-          child: Image.file(
-            _selectedImage!,
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
-          ),
-        );
-      }
+  @override
+  Widget build(BuildContext context) {
+    Widget content = TextButton.icon(
+      icon: const Icon(Icons.camera),
+      label: const Text('Take Picture'),
+      onPressed: _takePicture,
+    );
 
-      return Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 1,
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
-          ),
+    if (_selectedImage != null) {
+      content = GestureDetector(
+        onTap: _takePicture,
+        child: Image.file(
+          _selectedImage!,
+          fit: BoxFit.cover,
+          width: double.infinity,
+          height: double.infinity,
         ),
-        height: 250,
-        width: double.infinity,
-        alignment: Alignment.center,
-        child: content,
       );
     }
+
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 1,
+          color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+        ),
+      ),
+      height: 250,
+      width: double.infinity,
+      alignment: Alignment.center,
+      child: content,
+    );
   }
 }

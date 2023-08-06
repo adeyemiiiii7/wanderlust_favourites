@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wanderlust_favourites/providers/user_locations.dart';
+import 'package:wanderlust_favourites/widgets/image_input.dart';
 
 class AddLocationScreen extends ConsumerStatefulWidget {
   const AddLocationScreen({super.key});
@@ -46,6 +47,7 @@ class _AddLocationScreenState extends ConsumerState<AddLocationScreen> {
               ),
             ),
             const SizedBox(height: 16),
+            ImageInput(),
             ElevatedButton.icon(
               onPressed: _saveLocation,
               icon: const Icon(Icons.add),
