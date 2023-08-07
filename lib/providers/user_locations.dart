@@ -9,8 +9,8 @@ import 'package:wanderlust_favourites/models/location.dart';
 class UserLocationsNotifier extends StateNotifier<List<Location>> {
   UserLocationsNotifier() : super(const []);
 
-  void addLocation(String title, File file) {
-    final newLocation = Location(title: title);
+  void addLocation(String title, File image) {
+    final newLocation = Location(title: title, image: image);
     state = [newLocation, ...state];
   }
 }
