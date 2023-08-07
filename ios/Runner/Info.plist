@@ -2,7 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDevelopmentRegion</key>
+    <key>NSPhotoLibraryUsageDescription</key>
+	<string>Pick your a Wanderlust Location image.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Take a Wanderlust Location image.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Take a Wanderlust Location image.</string>
+	<key>NSMicrophoneUsageDescription</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>Wanderlust Favourites</string>
