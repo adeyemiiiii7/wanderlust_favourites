@@ -17,15 +17,50 @@ class _ImageInputState extends State<ImageInput> {
 
   void _takePicture() async {
     final imagePicker = ImagePicker();
-    final pickedImage =
-        await imagePicker.pickImage(source: ImageSource.camera, maxWidth: 600);
+    final pickedImage = await showDialog<ImageSource>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Select Image Source'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(ImageSource.camera),
+              child: Text('Camera',
+                  style: Theme.of(context).textTheme.bodyLarge!
+                  // .copyWith(
+                  //       color: Theme.of(context).colorScheme.onBackground,
+                  //     ),
+                  ),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(ImageSource.gallery),
+              child: Text('Gallery',
+                  style: Theme.of(context).textTheme.bodyLarge!
+                  // .copyWith(
+                  //       color: Theme.of(context).colorScheme.onBackground,
+                  //     ),
+                  ),
+            ),
+          ],
+        );
+      },
+    );
 
     if (pickedImage == null) {
       return;
     }
 
+    final pickedImageFile = await imagePicker.pickImage(
+      source: pickedImage,
+      maxWidth: 600,
+    );
+
+    if (pickedImageFile == null) {
+      return;
+    }
+
     setState(() {
-      _selectedImage = File(pickedImage.path);
+      _selectedImage = File(pickedImageFile.path);
     });
 
     widget.onPickImage(_selectedImage!);
