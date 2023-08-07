@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:wanderlust_favourites/models/location.dart';
 
 class LocationDetailScreen extends StatelessWidget {
-  const LocationDetailScreen({super.key, required this.location});
+  const LocationDetailScreen({
+    super.key,
+    required this.location,
+  });
 
   final Location location;
   @override
