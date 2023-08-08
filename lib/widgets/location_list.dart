@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:wanderlust_favourites/models/location.dart';
+import 'package:wanderlust_favourites/screens/location_detail.dart';
 
 class LocationsList extends StatelessWidget {
   const LocationsList({super.key, required this.locations});
@@ -28,6 +29,15 @@ class LocationsList extends StatelessWidget {
                       color: Theme.of(context).colorScheme.onBackground,
                     ),
               ),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (ctx) => LocationDetailScreen(
+                      location: locations[index],
+                    ),
+                  ),
+                );
+              },
             ));
   }
 }
