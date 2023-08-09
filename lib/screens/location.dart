@@ -24,7 +24,10 @@ class LocationsScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: LocationsList(locations: userLocations),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: LocationsList(locations: userLocations),
+      ),
     );
   }
 }
