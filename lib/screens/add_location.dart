@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wanderlust_favourites/providers/user_locations.dart';
 import 'package:wanderlust_favourites/widgets/image_input.dart';
+import 'package:wanderlust_favourites/widgets/location_input.dart';
 // This code snippet defines a Flutter screen for adding a new location. It includes a text field for the location title and an image picker widget for selecting an image. The screen uses Flutter Riverpod for state management.
 
 // The AddLocationScreen class extends ConsumerStatefulWidget, which allows it to access and update state using the Riverpod library. It has a single ConsumerState<AddLocationScreen> as its state class.
@@ -12,7 +13,6 @@ import 'package:wanderlust_favourites/widgets/image_input.dart';
 // The build method constructs the UI of the screen using Flutter's widget tree. It includes a Scaffold widget with an AppBar and a body that contains a SingleChildScrollView. Inside the SingleChildScrollView, there is a Column widget with a TextField for the title, an ImageInput widget for selecting an image, and an ElevatedButton for saving the location.
 
 // The dispose method is overridden to clean up resources when the screen is closed.
-
 
 class AddLocationScreen extends ConsumerStatefulWidget {
   const AddLocationScreen({Key? key}) : super(key: key);
@@ -66,6 +66,10 @@ class _AddLocationScreenState extends ConsumerState<AddLocationScreen> {
                 _selectedImage = image;
               },
             ),
+            const SizedBox(
+              height: 10,
+            ),
+            const LocationInput(),
             ElevatedButton.icon(
               onPressed: _saveLocation,
               icon: const Icon(Icons.add),
