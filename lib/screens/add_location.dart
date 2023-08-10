@@ -60,7 +60,7 @@ class _AddLocationScreenState extends ConsumerState<AddLocationScreen> {
                 color: Theme.of(context).colorScheme.onBackground,
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 10),
             ImageInput(
               onPickImage: (image) {
                 _selectedImage = image;
