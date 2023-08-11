@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 // This code snippet defines a Flutter widget called 'LocationInput' that displays a button with an icon and label to get the current location.
+import 'package:http/http.dart' as http;
 
 class LocationInput extends StatefulWidget {
   const LocationInput({Key? key}) : super(key: key);
@@ -39,8 +42,18 @@ class _LocationInputState extends State<LocationInput> {
     });
 
     locationData = await location.getLocation();
-    print(locationData.latitude);
-    print(locationData.longitude);
+    final lat = locationData.latitude;
+    final lng = locationData.longitude;
+    // print(locationData.latitude);
+    // print(locationData.longitude);
+    final url = Uri.parse(
+        'https://api.mapbox.com/geocoding/v5/mapbox.places/$lng,$lat.json?access_token=pk.eyJ1IjoiYWRleWVtaTA1IiwiYSI6ImNsbDRiYTJnODAza2MzZG82cXc1MWZmYXoifQ.1vtATMhAEeYNqeFS30EZuQ');
+    final response = await http.get(url);
+    final resData = json.decode(response.body);
+    final address = resData['type'][0]['formatted_features'];
+    setState(() {
+      _isGettingLocation = false;
+    });
   }
 
   @override
