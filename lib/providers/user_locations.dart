@@ -17,16 +17,16 @@ import 'package:wanderlust_favourites/models/location.dart';
 /// userLocations.addLocation('New York', File('new_york.jpg'));
 /// ```
 
-class UserLocationsNotifier extends StateNotifier<List<Location>> {
+class UserLocationsNotifier extends StateNotifier<List<Locations>> {
   UserLocationsNotifier() : super(const []);
 
   void addLocation(String title, File image) {
-    final newLocation = Location(title: title, image: image);
+    final newLocation = Locations(title: title, image: image);
     state = [newLocation, ...state];
   }
 }
 
 final userLocationProvider =
-    StateNotifierProvider<UserLocationsNotifier, List<Location>>(
+    StateNotifierProvider<UserLocationsNotifier, List<Locations>>(
   (ref) => UserLocationsNotifier(),
 );
