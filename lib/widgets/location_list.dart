@@ -5,7 +5,7 @@ import 'package:wanderlust_favourites/screens/location_detail.dart';
 
 class LocationsList extends StatelessWidget {
   const LocationsList({super.key, required this.locations});
-  final List<Location> locations;
+  final List<Locations> locations;
 
   @override
   Widget build(BuildContext context) {

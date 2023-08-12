@@ -8,7 +8,7 @@ class LocationDetailScreen extends StatelessWidget {
     required this.location,
   });
 
-  final Location location;
+  final Locations location;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
